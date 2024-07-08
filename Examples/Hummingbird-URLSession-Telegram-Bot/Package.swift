@@ -13,14 +13,14 @@ let targetDependencies: [PackageDescription.Target.Dependency] = [
 ]
 
 let package = Package(
-    name: "Hummingbird-URLSession-bot-example",
+    name: "Hummingbird-URLSession-Telegram-Bot",
     platforms: [
         .macOS(.v14)
     ],
     dependencies: packageDependencies,
     targets: [
         .executableTarget(
-            name: "Hummingbird-URLSession-bot-example",
+            name: "Hummingbird-URLSession-Telegram-Bot",
             dependencies: targetDependencies
         )
     ]
