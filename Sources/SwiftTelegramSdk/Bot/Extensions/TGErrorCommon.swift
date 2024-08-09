@@ -7,7 +7,7 @@
 
 import Foundation
 
-public protocol ErrorCommon: ErrorCommonMessage {
+public protocol TGErrorCommon: ErrorCommonMessage {
     var title: String { get set }
     var reason: String { get set }
     
@@ -28,7 +28,7 @@ public extension ErrorCommonMessage {
     }
 }
 
-public extension ErrorCommon {
+public extension TGErrorCommon {
     var title: String { "" }
     var reason: String { "" }
     var description: String { "[\(title)] \(reason)" }
@@ -54,7 +54,7 @@ public extension ErrorCommon {
     
 }
 
-public func makeError<T: ErrorCommonMessage>(_ error: T, _ funcName: String = #function, _ line: Int = #line) -> T {
+func makeError<T: ErrorCommonMessage>(_ error: T, _ funcName: String = #function, _ line: Int = #line) -> T {
     let message: String = "\(funcName) line: \(line), error: \(error.localizedDescription)"
     return T.mess(message)
 }
