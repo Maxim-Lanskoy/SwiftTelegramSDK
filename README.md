@@ -7,10 +7,21 @@
 #### Swift Server Side Community
 [Swift Server Side Community - Ukraine / Russian / CIS Telegram Chat](https://t.me/server_side_swift)
 
+# ⚠️ SWIFT 6
+
+Now for use in Swift 6, to avoid many compiler errors, please use the import as indicated below. In the future I plan to release a version with support for the new parallelism paradigm from Swift 6
+
+```swift
+@preconcurrency import SwiftTelegramSdk
+```
+
 # Usage
 - Clone one of [examples](https://github.com/nerzh/swift-telegram-sdk/tree/master/Examples)
   ```shell
-  git clone https://github.com/nerzh/swift-telegram-sdk/tree/master/Examples/Vapor-Telegram-Bot
+  git clone https://github.com/nerzh/swift-telegram-sdk
+  ```
+  ```
+  cd swift-telegram-sdk/Examples/Vapor-Telegram-Bot
   ```
 - Add your telegram bot id to [configure.swift](https://github.com/nerzh/swift-telegram-sdk/blob/master/Examples/Vapor-Telegram-Bot/Sources/Vapor-Telegram-Bot/configure.swift)
   ```swift
@@ -61,6 +72,28 @@ var connectionType: TGConnectionType = .longpolling(limit: nil,
 ##### WebHook
 ```swift
 var connectionType: TGConnectionType = .webhook(webHookURL: URL(string: "\(TG_WEBHOOK_DOMAIN!)/\(TGWebHookRouteName)")!)
+```
+```swift
+/// Add route for webhook. For example Vapor:
+
+/// routes.swift
+func routes(_ app: Application) throws {
+    try app.register(collection: TelegramController())
+}
+
+
+/// TelegramController.swift
+final class TelegramController: RouteCollection {
+    func boot(routes: Vapor.RoutesBuilder) throws {
+        routes.post(TGWebHookRouteName, use: telegramWebHook)
+    }
+
+    func telegramWebHook(_ req: Request) async throws -> Bool {
+        let update: TGUpdate = try req.content.decode(TGUpdate.self)
+        Task { await botActor.bot.dispatcher.process([update]) }
+        return true
+    }
+}
 ```
 ### Start bot with added handlers
 ```swift

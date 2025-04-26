@@ -163,6 +163,11 @@ public protocol TGBotPrtcl {
 
 
     @discardableResult
+    func setUserEmojiStatus(params: TGSetUserEmojiStatusParams) async throws -> Bool
+
+
+
+    @discardableResult
     func getFile(params: TGGetFileParams) async throws -> TGFile
 
 
@@ -508,6 +513,126 @@ public protocol TGBotPrtcl {
 
 
     @discardableResult
+    func getAvailableGifts() async throws -> TGGifts
+
+
+
+    @discardableResult
+    func sendGift(params: TGSendGiftParams) async throws -> Bool
+
+
+
+    @discardableResult
+    func giftPremiumSubscription(params: TGGiftPremiumSubscriptionParams) async throws -> Bool
+
+
+
+    @discardableResult
+    func verifyUser(params: TGVerifyUserParams) async throws -> Bool
+
+
+
+    @discardableResult
+    func verifyChat(params: TGVerifyChatParams) async throws -> Bool
+
+
+
+    @discardableResult
+    func removeUserVerification(params: TGRemoveUserVerificationParams) async throws -> Bool
+
+
+
+    @discardableResult
+    func removeChatVerification(params: TGRemoveChatVerificationParams) async throws -> Bool
+
+
+
+    @discardableResult
+    func readBusinessMessage(params: TGReadBusinessMessageParams) async throws -> Bool
+
+
+
+    @discardableResult
+    func deleteBusinessMessages(params: TGDeleteBusinessMessagesParams) async throws -> Bool
+
+
+
+    @discardableResult
+    func setBusinessAccountName(params: TGSetBusinessAccountNameParams) async throws -> Bool
+
+
+
+    @discardableResult
+    func setBusinessAccountUsername(params: TGSetBusinessAccountUsernameParams) async throws -> Bool
+
+
+
+    @discardableResult
+    func setBusinessAccountBio(params: TGSetBusinessAccountBioParams) async throws -> Bool
+
+
+
+    @discardableResult
+    func setBusinessAccountProfilePhoto(params: TGSetBusinessAccountProfilePhotoParams) async throws -> Bool
+
+
+
+    @discardableResult
+    func removeBusinessAccountProfilePhoto(params: TGRemoveBusinessAccountProfilePhotoParams) async throws -> Bool
+
+
+
+    @discardableResult
+    func setBusinessAccountGiftSettings(params: TGSetBusinessAccountGiftSettingsParams) async throws -> Bool
+
+
+
+    @discardableResult
+    func getBusinessAccountStarBalance(params: TGGetBusinessAccountStarBalanceParams) async throws -> TGStarAmount
+
+
+
+    @discardableResult
+    func transferBusinessAccountStars(params: TGTransferBusinessAccountStarsParams) async throws -> Bool
+
+
+
+    @discardableResult
+    func getBusinessAccountGifts(params: TGGetBusinessAccountGiftsParams) async throws -> TGOwnedGifts
+
+
+
+    @discardableResult
+    func convertGiftToStars(params: TGConvertGiftToStarsParams) async throws -> Bool
+
+
+
+    @discardableResult
+    func upgradeGift(params: TGUpgradeGiftParams) async throws -> Bool
+
+
+
+    @discardableResult
+    func transferGift(params: TGTransferGiftParams) async throws -> Bool
+
+
+
+    @discardableResult
+    func postStory(params: TGPostStoryParams) async throws -> TGStory
+
+
+
+    @discardableResult
+    func editStory(params: TGEditStoryParams) async throws -> TGStory
+
+
+
+    @discardableResult
+    func deleteStory(params: TGDeleteStoryParams) async throws -> Bool
+
+
+
+    @discardableResult
     func sendSticker(params: TGSendStickerParams) async throws -> TGMessage
 
 
@@ -598,6 +723,11 @@ public protocol TGBotPrtcl {
 
 
     @discardableResult
+    func savePreparedInlineMessage(params: TGSavePreparedInlineMessageParams) async throws -> TGPreparedInlineMessage
+
+
+
+    @discardableResult
     func sendInvoice(params: TGSendInvoiceParams) async throws -> TGMessage
 
 
@@ -624,6 +754,11 @@ public protocol TGBotPrtcl {
 
     @discardableResult
     func refundStarPayment(params: TGRefundStarPaymentParams) async throws -> Bool
+
+
+
+    @discardableResult
+    func editUserStarSubscription(params: TGEditUserStarSubscriptionParams) async throws -> Bool
 
 
 

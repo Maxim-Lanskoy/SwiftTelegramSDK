@@ -21,6 +21,9 @@ public struct TGCopyMessageParams: Encodable {
     /// Message identifier in the chat specified in from_chat_id
     public var messageId: Int
 
+    /// New start timestamp for the copied video in the message
+    public var videoStartTimestamp: Int?
+
     /// New caption for media, 0-1024 characters after entities parsing. If not specified, the original caption is kept
     public var caption: String?
 
@@ -39,6 +42,9 @@ public struct TGCopyMessageParams: Encodable {
     /// Protects the contents of the sent message from forwarding and saving
     public var protectContent: Bool?
 
+    /// Pass True to allow up to 1000 messages per second, ignoring broadcasting limits for a fee of 0.1 Telegram Stars per message. The relevant Stars will be withdrawn from the bot's balance
+    public var allowPaidBroadcast: Bool?
+
     /// Description of the message to reply to
     public var replyParameters: TGReplyParameters?
 
@@ -51,27 +57,31 @@ public struct TGCopyMessageParams: Encodable {
             case messageThreadId = "message_thread_id"
             case fromChatId = "from_chat_id"
             case messageId = "message_id"
+            case videoStartTimestamp = "video_start_timestamp"
             case caption = "caption"
             case parseMode = "parse_mode"
             case captionEntities = "caption_entities"
             case showCaptionAboveMedia = "show_caption_above_media"
             case disableNotification = "disable_notification"
             case protectContent = "protect_content"
+            case allowPaidBroadcast = "allow_paid_broadcast"
             case replyParameters = "reply_parameters"
             case replyMarkup = "reply_markup"
     }
 
-    public init(chatId: TGChatId, messageThreadId: Int? = nil, fromChatId: TGChatId, messageId: Int, caption: String? = nil, parseMode: TGParseMode? = nil, captionEntities: [TGMessageEntity]? = nil, showCaptionAboveMedia: Bool? = nil, disableNotification: Bool? = nil, protectContent: Bool? = nil, replyParameters: TGReplyParameters? = nil, replyMarkup: TGReplyMarkup? = nil) {
+    public init(chatId: TGChatId, messageThreadId: Int? = nil, fromChatId: TGChatId, messageId: Int, videoStartTimestamp: Int? = nil, caption: String? = nil, parseMode: TGParseMode? = nil, captionEntities: [TGMessageEntity]? = nil, showCaptionAboveMedia: Bool? = nil, disableNotification: Bool? = nil, protectContent: Bool? = nil, allowPaidBroadcast: Bool? = nil, replyParameters: TGReplyParameters? = nil, replyMarkup: TGReplyMarkup? = nil) {
             self.chatId = chatId
             self.messageThreadId = messageThreadId
             self.fromChatId = fromChatId
             self.messageId = messageId
+            self.videoStartTimestamp = videoStartTimestamp
             self.caption = caption
             self.parseMode = parseMode
             self.captionEntities = captionEntities
             self.showCaptionAboveMedia = showCaptionAboveMedia
             self.disableNotification = disableNotification
             self.protectContent = protectContent
+            self.allowPaidBroadcast = allowPaidBroadcast
             self.replyParameters = replyParameters
             self.replyMarkup = replyMarkup
     }
